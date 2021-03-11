@@ -1,6 +1,5 @@
 package uz.pdp.appjparelationships.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import uz.pdp.appjparelationships.entity.Faculty;
 import uz.pdp.appjparelationships.entity.Group;
@@ -15,13 +14,15 @@ import java.util.Optional;
 @RequestMapping("/group")
 public class GroupController {
 
-    @Autowired
-    GroupRepository groupRepository;
-    @Autowired
-    FacultyRepository facultyRepository;
+    final GroupRepository groupRepository;
+    final FacultyRepository facultyRepository;
+
+    public GroupController(GroupRepository groupRepository, FacultyRepository facultyRepository) {
+        this.groupRepository = groupRepository;
+        this.facultyRepository = facultyRepository;
+    }
 
     //VAZIRLIK UCHUN
-    //READ
     @GetMapping
     public List<Group> getGroups() {
         List<Group> groups = groupRepository.findAll();

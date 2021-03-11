@@ -44,14 +44,12 @@ public class FacultyController {
         return "Faculty saved";
     }
 
-
     //UNIVERSITET XODIMI UCHUN
     @GetMapping("/byUniversityId/{universityId}")
     public List<Faculty> getFacultiesByUniversityId(@PathVariable Integer universityId) {
         List<Faculty> allByUniversityId = facultyRepository.findAllByUniversityId(universityId);
         return allByUniversityId;
     }
-
 
     @DeleteMapping("/{id}")
     public String deleteFaculty(@PathVariable Integer id) {
@@ -62,7 +60,6 @@ public class FacultyController {
             return "Error in deleting";
         }
     }
-
 
     @PutMapping("/{id}")
     public String editFaculty(@PathVariable Integer id, @RequestBody FacultyDto facultyDto) {
@@ -80,6 +77,4 @@ public class FacultyController {
         }
         return "Faculty not found";
     }
-
-
 }
